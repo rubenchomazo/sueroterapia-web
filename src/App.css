@@ -36,6 +36,18 @@ body {
   padding: 60px 20px;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(13, 42, 46, 0.75);
+  pointer-events: none;
 }
 
 .hero-logo {
@@ -49,20 +61,7 @@ body {
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 80%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(168, 213, 186, 0.06) 0%, transparent 50%),
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M100 20 C120 40 140 60 140 100 C140 140 120 180 100 180 C80 180 60 140 60 100 C60 60 80 40 100 20" fill="none" stroke="%234ECDC4" stroke-width="0.5" opacity="0.1"/><circle cx="100" cy="100" r="60" fill="none" stroke="%234ECDC4" stroke-width="0.3" opacity="0.08"/><circle cx="100" cy="100" r="30" fill="none" stroke="%234ECDC4" stroke-width="0.3" opacity="0.06"/></svg>');
-  background-size: cover, cover, 400px;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-content {
@@ -130,6 +129,152 @@ body {
   box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
 
+.steps {
+  background: var(--primary);
+  padding: 60px 40px;
+}
+
+.steps h2 {
+  text-align: center;
+  color: var(--secondary);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid rgba(78, 205, 196, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.step-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+}
+
+.step-card h3 {
+  color: var(--white);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+.packages {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 60px 40px;
+}
+
+.packages h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.package-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+}
+
+.package-card h3 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.package-card .original-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 1rem;
+}
+
+.package-card .price {
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.package-card .savings {
+  color: var(--coral);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.package-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: auto;
+}
+
+.package-card .hero-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+.package-card li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #555;
+  padding-left: 25px;
+  position: relative;
+}
+
+.package-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
 .services {
   background: rgba(255, 255, 255, 0.95);
   padding: 60px 40px;
@@ -140,6 +285,8 @@ body {
   color: var(--primary);
   font-size: 2rem;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .services-grid {
@@ -153,11 +300,20 @@ body {
 .service-card {
   background: var(--white);
   border-radius: 16px;
-  padding: 30px 20px;
+  padding: 20px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   border: 2px solid transparent;
+  overflow: hidden;
+}
+
+.service-card .card-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
 }
 
 .service-card:hover {
@@ -267,6 +423,17 @@ body {
   width: 40px;
   height: 40px;
   color: var(--white);
+}
+
+.modal-image {
+  width: 100%;
+  max-width: 300px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 20px;
+  display: block;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .modal-content h3 {

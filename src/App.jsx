@@ -1,16 +1,21 @@
 import { useState } from 'react'
 import logoPng from './logo.png'
+import suero1Png from './assets/suero1.png'
+import suero2Png from './assets/conjuntosueros.png'
+import suero3Png from './assets/conjuntosueros2.png'
+import fondoPng from './assets/fondo.png'
 import './App.css'
 
 function App() {
   const tatianaPhone = "3014093245"
   const [selectedService, setSelectedService] = useState(null)
 
-  const services = [
+const services = [
     {
       id: 1,
       name: "Suero Terapias",
       icon: "droplet",
+      image: suero1Png,
       description: "Tratamientos personalizados de sueroterapia adaptados a tus necesidades específicas. Restauramos tu bienestar mediante la administración de vitaminas, minerales y nutrientes directamente en tu organismo.",
       benefits: ["Hidratación profunda", "Reparación celular", "Mejora del sistema inmune", "Tratamiento personalizado"]
     },
@@ -18,6 +23,7 @@ function App() {
       id: 2,
       name: "Revitalizar",
       icon: "energy",
+      image: suero2Png,
       description: "Dale a tu cuerpo la energía que necesita para recuperar su vitalidad óptima. Nuestros tratamientos revitalizantes combaten el agotamiento y devuelven el brillo natural a tu piel y cabello.",
       benefits: ["Aumento de energía", "Piel más luminosa", "Cabello fortalecimiento", "Rejuvenecimiento general"]
     },
@@ -25,15 +31,56 @@ function App() {
       id: 3,
       name: "Cansancio",
       icon: "battery",
-      description: " combatimos la fatiga crónica y el agotamiento con terapias especializadas. Recupera tu energia natural y vuelve a sentirte有你 penuh (completo) y con fuerza.",
+      image: suero2Png,
+      description: " combatimos la fatiga crónica y el agotamiento con terapias especializadas. Recupera tu energia natural y vuelve a sentirte penuh (completo) y con fuerza.",
       benefits: ["Recuperación de energía", "Mejora del descanso", "Reducción del estrés", "Vitalidad sostenida"]
     },
     {
       id: 4,
       name: "Dolor",
       icon: "heart",
+      image: suero3Png,
       description: "Tratamientos especializados para el manejo del dolor crónico y agudo. Nuestro enfoque integral ayuda a reducir la inflamación y mejorar tu calidad de vida.",
       effects: ["Reducción de inflamaciones", "Alivio muscular", "Mejora de movilidad", "Complemento al tratamiento médico"]
+    }
+  ]
+
+const steps = [
+    { number: "1", title: "Agenda tu cita", description: "Contáctanos por WhatsApp y programa tu sesión" },
+    { number: "2", title: "Evaluación médica", description: "Valoramos tu estado de salud y necesidades" },
+    { number: "3", title: "Aplicación del tratamiento", description: "Recibirás tu terapia de forma segura y cómoda" },
+    { number: "4", title: "Seguimiento", description: "Te acompañamos en todo tu proceso de bienestar" }
+  ]
+
+  const getArrow = () => (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
+  )
+
+  const packages = [
+    { 
+      name: "Sesión individual", 
+      price: "$150.000", 
+      features: ["1 sesión de sueroterapia", "Valoración inicial", "Seguimiento post-tratamiento"],
+      highlight: false
+    },
+    { 
+      name: "Pack Basic", 
+      originalPrice: "$500.000",
+      price: "$450.000", 
+      savings: "Ahorra $50.000",
+      features: ["4 sesiones de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Tratamiento personalizado"],
+      highlight: false
+    },
+    { 
+      name: "Pack Premium", 
+      originalPrice: "$900.000",
+      price: "$750.000", 
+      savings: "Ahorra $150.000",
+      features: ["8 sesiones de sueroterapia", "Valoración inicial", "Seguimiento VIP", "Tratamiento personalizado", "-kit de mantenimiento"],
+      highlight: true
     }
   ]
 
@@ -69,7 +116,8 @@ function App() {
 
   return (
     <div className="app">
-      <section className="hero">
+      <section className="hero" style={{ backgroundImage: `url(${fondoPng})` }}>
+        <div className="hero-overlay"></div>
         <div className="hero-content">
           <img src={logoPng} alt="JARAVITAL" className="hero-logo" />
           <h1>JARAVITAL</h1>
@@ -87,6 +135,24 @@ function App() {
         </div>
       </section>
 
+      <section className="steps">
+        <h2>¿Cómo funciona?</h2>
+        <div className="steps-grid">
+          {steps.map((step, index) => (
+            <div key={step.number} className="step-card">
+              <div className="step-icon">
+                {index === 0 && getArrow()}
+                {index === 1 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>}
+                {index === 2 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>}
+                {index === 3 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>}
+              </div>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="services">
         <h2>Nuestros Servicios</h2>
         <div className="services-grid">
@@ -96,6 +162,9 @@ function App() {
               className="service-card"
               onClick={() => setSelectedService(service)}
             >
+              {service.image && (
+                <img src={service.image} alt={service.name} className="card-image" />
+              )}
               <div className="service-icon">
                 {getIcon(service.icon)}
               </div>
@@ -117,6 +186,9 @@ function App() {
             <div className="modal-icon">
               {getIcon(selectedService.icon)}
             </div>
+            {selectedService.image && (
+              <img src={selectedService.image} alt={selectedService.name} className="modal-image" />
+            )}
             <h3>{selectedService.name}</h3>
             <p className="modal-description">{selectedService.description}</p>
             <div className="modal-benefits">
@@ -139,6 +211,32 @@ function App() {
           </div>
         </div>
       )}
+
+      <section className="packages">
+        <h2>Nuestros Paquetes</h2>
+        <div className="packages-grid">
+          {packages.map((pkg, i) => (
+            <div key={i} className={`package-card ${pkg.highlight ? 'highlight' : ''}`}>
+              {pkg.highlight && <span className="popular-badge">Más popular</span>}
+              <h3>{pkg.name}</h3>
+              {pkg.originalPrice && <span className="original-price">{pkg.originalPrice}</span>}
+              <p className="price">{pkg.price}</p>
+              {pkg.savings && <span className="savings">{pkg.savings}</span>}
+              <ul>
+                {pkg.features.map((feature, j) => (
+                  <li key={j}>{feature}</li>
+                ))}
+              </ul>
+              <a href={`https://wa.me/${tatianaPhone}?text=Hola, me interesa el ${pkg.name}`} className="hero-button">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Reservar
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <footer className="footer">
         <p>© 2026 JARAVITAL - Tatiana Jaramillo</p>
