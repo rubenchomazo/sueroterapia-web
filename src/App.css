@@ -511,5 +511,46 @@ body {
   
   .services {
     padding: 40px 20px;
-  }
 }
+}
+
+.faq {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 60px 40px;
+}
+
+.faq h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.faq-item h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.faq-item p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer {

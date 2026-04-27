@@ -1,14 +1,36 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import logoPng from './logo.png'
 import suero1Png from './assets/suero1.png'
 import suero2Png from './assets/conjuntosueros.png'
 import suero3Png from './assets/conjuntosueros2.png'
-import fondoPng from './assets/fondo.png'
+import principal2Png from './assets/principal2.png'
 import './App.css'
 
 function App() {
   const tatianaPhone = "3014093245"
   const [selectedService, setSelectedService] = useState(null)
+  const stepsRef = useRef(null)
+  const servicesRef = useRef(null)
+  const faqRef = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    document.querySelectorAll('.fade-in').forEach((el) => {
+      observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
 const services = [
     {
@@ -50,6 +72,15 @@ const steps = [
     { number: "2", title: "Evaluación médica", description: "Valoramos tu estado de salud y necesidades" },
     { number: "3", title: "Aplicación del tratamiento", description: "Recibirás tu terapia de forma segura y cómoda" },
     { number: "4", title: "Seguimiento", description: "Te acompañamos en todo tu proceso de bienestar" }
+  ]
+
+  const faqs = [
+    { question: "¿Qué es la sueroterapia?", answer: "La sueroterapia o terapia intravenosa es un tratamiento que introduce vitaminas, minerales y nutrientes directamente en el torrente sanguíneo para una absorción óptima y rápidos resultados." },
+    { question: "¿Es seguro?", answer: "Sí, todos los tratamientos son administrados por profesionales de la salud altamente capacitados. Usamos productos de grado farmacéutico y seguilos protocolos de seguridad." },
+    { question: "¿Cuánto dura cada sesión?", answer: "Las sesiones varían entre 30 minutos a 2 horas dependiendo del tratamiento. Te informamos previamente sobre el tiempo estimado." },
+    { question: "¿Necesito cita previa?", answer: "Sí, es necesario agendar una cita previa. Contáctanos por WhatsApp para programar tu sesión y recibir información detallada." },
+    { question: "¿Hay efectos secundarios?", answer: "Los efectos secundarios son mínimos y raros. Puede haber leve molestia en el sitio de aplicación o ligeros mareos temporales." },
+    { question: "¿Quién puede recibir tratamiento?", answer: "La mayoría de adultos saludables pueden recibir tratamiento. Realizamos una evaluación médica previa para déterminer si es适合 para ti." }
   ]
 
   const getArrow = () => (
@@ -116,7 +147,7 @@ const steps = [
 
   return (
     <div className="app">
-      <section className="hero" style={{ backgroundImage: `url(${fondoPng})` }}>
+      <section className="hero" style={{ backgroundImage: `url(${principal2Png})` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <img src={logoPng} alt="JARAVITAL" className="hero-logo" />
@@ -135,11 +166,11 @@ const steps = [
         </div>
       </section>
 
-      <section className="steps">
+      <section className="steps fade-in">
         <h2>¿Cómo funciona?</h2>
         <div className="steps-grid">
           {steps.map((step, index) => (
-            <div key={step.number} className="step-card">
+            <div key={step.number} className={`step-card fade-in stagger-${index + 1}`}>
               <div className="step-icon">
                 {index === 0 && getArrow()}
                 {index === 1 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>}
@@ -153,13 +184,13 @@ const steps = [
         </div>
       </section>
 
-      <section className="services">
+      <section className="services fade-in">
         <h2>Nuestros Servicios</h2>
         <div className="services-grid">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div 
               key={service.id} 
-              className="service-card"
+              className={`service-card fade-in stagger-${index + 1}`}
               onClick={() => setSelectedService(service)}
             >
               {service.image && (
@@ -212,11 +243,11 @@ const steps = [
         </div>
       )}
 
-      <section className="packages">
+      <section className="packages fade-in">
         <h2>Nuestros Paquetes</h2>
         <div className="packages-grid">
           {packages.map((pkg, i) => (
-            <div key={i} className={`package-card ${pkg.highlight ? 'highlight' : ''}`}>
+            <div key={i} className={`package-card ${pkg.highlight ? 'highlight' : ''} fade-in stagger-${(i % 3) + 1}`}>
               {pkg.highlight && <span className="popular-badge">Más popular</span>}
               <h3>{pkg.name}</h3>
               {pkg.originalPrice && <span className="original-price">{pkg.originalPrice}</span>}
@@ -233,6 +264,18 @@ const steps = [
                 </svg>
                 Reservar
               </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="faq fade-in">
+        <h2>Preguntas Frecuentes</h2>
+        <div className="faq-grid">
+          {faqs.map((faq, index) => (
+            <div key={index} className={`faq-item fade-in stagger-${(index % 4) + 1}`}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
             </div>
           ))}
         </div>
