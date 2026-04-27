@@ -277,7 +277,20 @@ body {
 
 .services {
   background: rgba(255, 255, 255, 0.95);
-  padding: 60px 40px;
+  padding: 60px 40px 20px;
+  position: relative;
+  min-height: 600px;
+}
+
+.services-fondo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .services h2 {

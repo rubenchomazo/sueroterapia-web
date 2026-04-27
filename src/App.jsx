@@ -4,6 +4,7 @@ import suero1Png from './assets/suero1.png'
 import suero2Png from './assets/conjuntosueros.png'
 import suero3Png from './assets/conjuntosueros2.png'
 import principal2Png from './assets/principal2.png'
+import fondoPng from './assets/fondo.png'
 import './App.css'
 
 function App() {
@@ -203,6 +204,7 @@ const steps = [
             </div>
           ))}
         </div>
+        <img src={fondoPng} alt="" className="services-fondo" />
       </section>
 
       {selectedService && (
