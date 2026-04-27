@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <text x="100" y="28" font-family="Arial, sans-serif" font-size="22" font-weight="300" fill="#1A535C" text-anchor="middle" letter-spacing="3">SUEROTERAPIA</text>
+  <path d="M92 38 L92 58 Q92 65 100 65 Q108 65 108 58 L108 38" stroke="#1A535C" stroke-width="2" fill="none"/>
+  <path d="M96 42 L96 56 Q96 60 100 60 Q104 60 104 56 L104 42" fill="#3CAF50"/>
+  <circle cx="100" cy="47" r="2" fill="white" opacity="0.6"/>
+</svg>
