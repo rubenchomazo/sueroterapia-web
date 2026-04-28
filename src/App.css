@@ -627,8 +627,10 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 80vh;
+    min-height: auto;
     padding: 40px 20px;
+    align-items: flex-start;
+    padding-top: 80px;
   }
   
   .hero-logo {
