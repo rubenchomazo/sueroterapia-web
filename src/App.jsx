@@ -55,7 +55,7 @@ const services = [
       name: "Cansancio",
       icon: "battery",
       image: suero2Png,
-      description: " combatimos la fatiga crónica y el agotamiento con terapias especializadas. Recupera tu energia natural y vuelve a sentirte penuh (completo) y con fuerza.",
+      description: " combatimos la fatiga crónica y el agotamiento con terapias especializadas. Recupera tu energia natural y vuelve a sentirte completo y con fuerza.",
       benefits: ["Recuperación de energía", "Mejora del descanso", "Reducción del estrés", "Vitalidad sostenida"]
     },
     {
@@ -77,11 +77,11 @@ const steps = [
 
   const faqs = [
     { question: "¿Qué es la sueroterapia?", answer: "La sueroterapia o terapia intravenosa es un tratamiento que introduce vitaminas, minerales y nutrientes directamente en el torrente sanguíneo para una absorción óptima y rápidos resultados." },
-    { question: "¿Es seguro?", answer: "Sí, todos los tratamientos son administrados por profesionales de la salud altamente capacitados. Usamos productos de grado farmacéutico y seguilos protocolos de seguridad." },
+    { question: "¿Es seguro?", answer: "Sí, todos los tratamientos son administrados por profesionales de la salud altamente capacitados. Usamos productos de grado farmacéutico y seguimos los protocolos de seguridad." },
     { question: "¿Cuánto dura cada sesión?", answer: "Las sesiones varían entre 30 minutos a 2 horas dependiendo del tratamiento. Te informamos previamente sobre el tiempo estimado." },
     { question: "¿Necesito cita previa?", answer: "Sí, es necesario agendar una cita previa. Contáctanos por WhatsApp para programar tu sesión y recibir información detallada." },
     { question: "¿Hay efectos secundarios?", answer: "Los efectos secundarios son mínimos y raros. Puede haber leve molestia en el sitio de aplicación o ligeros mareos temporales." },
-    { question: "¿Quién puede recibir tratamiento?", answer: "La mayoría de adultos saludables pueden recibir tratamiento. Realizamos una evaluación médica previa para déterminer si es适合 para ti." }
+    { question: "¿Quién puede recibir tratamiento?", answer: "La mayoría de adultos saludables pueden recibir tratamiento. Realizamos una evaluación médica previa para determinar si es adecuado para ti." }
   ]
 
   const getArrow = () => (
@@ -148,7 +148,7 @@ const steps = [
 
   return (
     <div className="app">
-      <section className="hero" style={{ backgroundImage: `url(${principal2Png})` }}>
+      <section className="hero" style={{ backgroundImage: `url(${principal2Png})`, backgroundPosition: 'center top' }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <img src={logoPng} alt="JARAVITAL" className="hero-logo" />
@@ -284,7 +284,7 @@ const steps = [
       </section>
 
       <footer className="footer">
-        <p>© 2026 JARAVITAL - Tatiana Jaramillo</p>
+        <p>© 2026 JARAVITAL</p>
       </footer>
     </div>
   )
