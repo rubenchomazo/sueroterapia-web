@@ -18,26 +18,51 @@
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 40px 20px 30px;
+    padding: 30px 20px;
+    background-size: cover;
+    background-position: center;
   }
   
   .hero-content {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .hero-logo {
+    width: 80px;
+    height: 80px;
   }
   
   .hero h1 {
-    font-size: 2.5rem;
-    letter-spacing: 5px;
+    font-size: 2rem;
+    letter-spacing: 3px;
   }
   
   .hero h2 {
-    font-size: 1rem;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+  
+  .prof-name {
+    font-size: 1.3rem;
+  }
+  
+  .hero .title {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
   }
   
   .hero-button {
-    padding: 12px 25px;
-    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .steps, .services, .packages, .faq {
+    padding: 30px 20px;
+  }
+  
+  .steps h2, .services h2, .packages h2, .faq h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
   }
 }
 
