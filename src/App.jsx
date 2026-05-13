@@ -112,7 +112,7 @@ function App() {
       icon: "hangover",
       image: resacaPng,
       description: "Recuperación rápida después de una noche larga. Rehidrata tu cuerpo inmediatamente, alivia el dolor de cabeza y elimina las náuseas para que vuelvas a tu día.",
-      benefits: ["Valor: $80.000", "Rehidratación rápida", "Alivio de náuseas", "Adiós al dolor de cabeza", "Acelera la descomposición de toxinas"],
+      benefits: ["Valor: $100.000", "Rehidratación rápida", "Alivio de náuseas", "Adiós al dolor de cabeza", "Acelera la descomposición de toxinas"],
       highlight: true,
       highlightText: "Más económico"
     }
