@@ -49,6 +49,27 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
+  // Cerrar modal con el botón "atrás" del navegador
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedService(null)
+    }
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+  const openService = (service) => {
+    setSelectedService(service)
+    history.pushState({ modal: service.id }, '')
+  }
+
+  const closeService = () => {
+    setSelectedService(null)
+    if (history.state && history.state.modal) {
+      history.back()
+    }
+  }
+
   const services = [
     {
       id: 1,
@@ -331,7 +352,7 @@ function App() {
             <div
               key={service.id}
               className={`service-card fade-in stagger-${index + 1} ${service.highlight ? 'highlight' : ''}`}
-              onClick={() => setSelectedService(service)}
+              onClick={() => openService(service)}
             >
               {service.highlight && <span className="popular-badge">{service.highlightText || "Más popular"}</span>}
               {service.image && (
@@ -341,6 +362,10 @@ function App() {
                 {getIcon(service.icon)}
               </div>
               <p>{service.name}</p>
+              <span className="card-tap-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><path d="M9 11V6a3 3 0 0 1 6 0v5" /><path d="M5 11h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8z" /></svg>
+                Ver más
+              </span>
             </div>
           ))}
         </div>
@@ -348,9 +373,9 @@ function App() {
       </section>
 
       {selectedService && (
-        <div className="modal-overlay" onClick={() => setSelectedService(null)}>
+        <div className="modal-overlay" onClick={closeService}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedService(null)}>
+            <button className="modal-close" onClick={closeService}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />

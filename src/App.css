@@ -590,6 +590,34 @@ body {
   font-weight: 500;
 }
 
+.service-card {
+  cursor: pointer;
+}
+
+.card-tap-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(26, 83, 92, 0.08);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .card-tap-hint {
+  opacity: 1;
+  background: var(--secondary);
+  color: var(--dark);
+  transform: translateY(-2px);
+}
+
 /* ========================
    Modal
 ======================== */
