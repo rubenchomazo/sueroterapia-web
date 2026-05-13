@@ -168,30 +168,30 @@ function App() {
   const packages = [
     {
       name: "Sesión Vital",
-      price: "$210.000",
+      price: "$190.000",
       features: ["1 sesión de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Atención en la comodidad de tu hogar", "Domicilio incluido"],
       highlight: false
     },
     {
       name: "Plan Vecino",
-      price: "$380.000",
-      features: ["2 personas, 1 sesión para cada una", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Si agendas 2 personas ó más en el mismo lugar, cada sesión tendría un valor de $190.000"],
+      price: "$340.000",
+      features: ["2 personas, 1 sesión para cada una", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Si agendas 2 personas ó más en el mismo lugar, cada sesión tendría un valor de $170.000"],
       highlight: true
     },
     {
       name: "Plan Equilibrio",
-      originalPrice: "$1'050.000",
-      price: "$900.000",
+      originalPrice: "$950.000",
+      price: "$800.000",
       savings: "Ahorra $150.000",
-      features: ["5 sesiones de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Paga en 2 cuotas de $450.000, en tu primera y tercera sesión"],
+      features: ["5 sesiones de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Paga en 2 cuotas de $400.000, en tu primera y tercera sesión"],
       highlight: false
     },
     {
       name: "Plan Premium",
-      originalPrice: "$1'470.000",
-      price: "$1'250.000",
-      savings: "Ahorra $220.000",
-      features: ["7 sesiones de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Paga en 3 cuotas, en tu primera sesión pagas $500.000, en la tercera y quinta sesión pagas $400.000", "Al tomar este plan recibes una Sesión Vital para un referido con el 50% de descuento"],
+      originalPrice: "$1'330.000",
+      price: "$1'050.000",
+      savings: "Ahorra $280.000",
+      features: ["7 sesiones de sueroterapia", "Valoración inicial", "Seguimiento personalizado", "Domicilio incluido", "Paga en 3 cuotas de $350.000, en tu primera, tercera y quinta sesión", "Al tomar este plan recibes una Sesión Vital para un referido con el 50% de descuento"],
       highlight: false
     }
   ]
@@ -412,7 +412,7 @@ function App() {
           ))}
         </div>
         <p className="packages-note">
-          📍 ¿Vives en Guarne ó Santa Elena? Aprovecha nuestro precio especial para la comunidad local: $190.000 por Sesión Vital.
+          📍 ¿Vives en Guarne ó Santa Elena? Aprovecha nuestro precio especial para la comunidad local: $170.000 por Sesión Vital.
         </p>
       </section>
 
